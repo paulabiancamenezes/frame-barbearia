@@ -1,5 +1,4 @@
 <?php
-	// Conexão com o banco de dados (substitua com suas próprias configurações)
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
@@ -18,6 +17,13 @@
 	    echo "Erro ao recuperar os agendamentos: " . $e->getMessage();
 	    exit();
 	}
+		try {
+	    $stmt = $db->query("SELECT * FROM agendamentos WHERE status_agendamento = 'Pendente'");
+	    $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	} catch (PDOException $e) {
+	    echo "Erro ao recuperar os agendamentos: " . $e->getMessage();
+	    exit();
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,19 +33,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	<link rel="icon" href="../img/penteado.png" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<title>Horários Pendentes</title>
-	<style type="text/css">
-		section.hora p{
-			font-size: 15px;
-		}
-		section.hora .btn-confirma{
-			display: flex;
-			justify-content: space-between;
-			width: 23%;
-		}
-
-		
-	</style>
+	<title>Horários Pendentes</title>		
 </head>
 <body>
 	<!-- Modal -->
@@ -127,19 +121,23 @@
 			                        echo '<p>Serviço: <strong>' . htmlspecialchars($agendamento["servico"]) . '</strong></p>';
 			                        echo '<p>horario: <strong>' . htmlspecialchars($agendamento["hora"]) . '</strong></p>';
 			                        echo '<p>Data: <strong>' . htmlspecialchars($agendamento["data"]) . '</strong></p>';
+			                        echo '<p>Status: <strong class="status">' . htmlspecialchars($agendamento["status_agendamento"]) . '</strong></p>';
 			                        echo '</div>';
-						            echo '<div class="btn-confirma">';
-									echo '<button class="confirma" id="myBtn"><i class="bi bi-check2"></i></button>';
-									echo '<button class="rejeita" id="myBtn"><i class="bi bi-x-lg"></i></button>';
-									echo '</div>';
+						            	echo '<div class="btn-confirma">';
+											echo '<a href="aceitar.php?id=' . $agendamento["id"] . '"><button class="confirma"><i class="bi bi-check2"></i></button></a>';
+                            		echo '<a href="recusar.php?id=' . $agendamento["id"] . '"><button class="rejeita"><i class="bi bi-x-lg"></i></button></a>';
+											echo '</div>';
 			                        echo '</div>';
 			                    }
 		                	}else{
 			                	echo '<div class="card-hora">';
-			                	echo '<div class="card-info">';
-			                    echo "<strong>Ainda não houve agendamentos</strong>";
-			                    echo '</div>';
-			                    echo '</div>';
+                                    echo '<div class="card-info">';
+                                    echo "<strong>Ainda não houve agendamentos</strong>";
+                                    echo'<div class="btn-tempo">';
+                                    echo'<button class="btn-tempo"><i class="bi bi-hourglass-split"></i></button>';
+                                    echo'</div>';
+                                    echo '</div>';
+                                    echo '</div>';
 			                }
 						?>
 					</div>

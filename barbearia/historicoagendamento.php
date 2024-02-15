@@ -1,3 +1,30 @@
+<?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "banco";    
+    try {
+        $db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+        echo "Erro na conexão: " . $e->getMessage();
+        exit();
+    }
+    try {
+        $stmt = $db->query("SELECT * FROM agendamentos");
+        $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+        echo "Erro ao recuperar os agendamentos: " . $e->getMessage();
+        exit();
+    }
+        try {
+        $stmt = $db->query("SELECT * FROM agendamentos WHERE status_agendamento = 'Recusado' OR status_agendamento ='Encerrado'");
+        $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Erro ao recuperar os agendamentos: " . $e->getMessage();
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +38,9 @@
         section.hora i{
             color: #ff0f0f;
             font-size: 40px;
+        }
+        strong.status {
+            color: #ff0f0f;
         }
     </style>
 </head>
@@ -67,40 +97,34 @@
             <div class="interface">
                 <div class="flex">
                     <div class="hora-group">
-                        <div class="card-hora">
-                            <div class="card-info">
-                                <p>Nome: <strong>João Victor</strong></p>
-                                <p>Nº Telefone: <strong>(12)123654987</strong> </p>
-                                <p>hora: <strong>10:00</strong></p>
-                                <p>Data: <strong>28/02 - (Segunda-Feira)</strong></p>
-                            </div>
-                            <div class="btn-tempo">
-                                <button class="tempo"><i class="bi bi-clock-history"></i></button>
-                            </div>
-                        </div>
-                        <div class="card-hora">
-                            <div class="card-info">
-                                 <p>Nome: <strong>João Victor</strong></p>
-                                <p>Nº Telefone: <strong>(12)123654987</strong> </p>
-                                <p>hora: <strong>10:00</strong></p>
-                                <p>Data: <strong>28/02 - (Segunda-Feira)</strong></p>
-                            </div>
-                            <div class="btn-tempo">
-                                <button class="tempo"><i class="bi bi-clock-history"></i></button>
-                            </div>
-                        </div>
-                        <div class="card-hora">
-                            <div class="card-info">
-                                 <p>Nome: <strong>João Victor</strong></p>
-                                <p>Nº Telefone: <strong>(12)123654987</strong> </p>
-                                <p>hora: <strong>10:00</strong></p>
-                                <p>Data: <strong>28/02 - (Segunda-Feira)</strong></p>
-                            </div>
-                            <div class="btn-tempo">
-                                <button class="tempo"><i class="bi bi-clock-history"></i></button>
-                                
-                            </div>
-                        </div>
+                       <?php
+                            if ($agendamentos) {
+                                foreach ($agendamentos as $agendamento) {
+                                    echo '<div class="card-hora">';
+                                    echo '<div class="card-info">';
+                                    echo '<p>Nome: <strong>' . htmlspecialchars($agendamento["nome"]) . '</strong></p>';
+                                    echo '<p>Nº Celular: <strong>' . htmlspecialchars($agendamento["numero"]) . '</strong></p>';
+                                    echo '<p>Serviço: <strong>' . htmlspecialchars($agendamento["servico"]) . '</strong></p>';
+                                    echo '<p>horario: <strong>' . htmlspecialchars($agendamento["hora"]) . '</strong></p>';
+                                    echo '<p>Data: <strong>' . htmlspecialchars($agendamento["data"]) . '</strong></p>';
+                                    echo '<p>Status: <strong class="status">' . htmlspecialchars($agendamento["status_agendamento"]) . '</strong></p>';
+                                    echo '</div>';
+                                    echo'<div class="btn-tempo">';
+                                    echo'<button class="temp"><i class="bi bi-clock-history"></i></button>';
+                                    echo'</div>';
+                                    echo'</div>';
+                                    }
+                                }else{
+                                    echo '<div class="card-hora">';
+                                    echo '<div class="card-info">';
+                                    echo "<strong>Ainda não houve agendamentos</strong>";
+                                    echo'<div class="btn-tempo">';
+                                    echo'<button class="btn-tempo"><i class="bi bi-hourglass-split"></i></button>';
+                                    echo'</div>';
+                                    echo '</div>';
+                                    echo '</div>';
+                                }
+                                ?>
                     </div>
                 </div><!--flex-->
             </div><!--interface-->

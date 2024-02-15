@@ -16,12 +16,12 @@ if (isset($_SESSION['user_id'])) {
         exit();
     }
 
-    // Consulta para obter o número total de registros na tabela "agendamentos"
-    $queryCount = "SELECT COUNT(*) as total_registros FROM agendamentos";
-    $stmtCount = $db->prepare($queryCount);
-    $stmtCount->execute();
-    $resultadoCount = $stmtCount->fetch(PDO::FETCH_ASSOC);
-    $total_registros = $resultadoCount['total_registros'];
+    // // Consulta para obter o número total de registros na tabela "agendamentos"
+    // $queryCount = "SELECT COUNT(*) as total_registros FROM agendamentos";
+    // $stmtCount = $db->prepare($queryCount);
+    // $stmtCount->execute();
+    // $resultadoCount = $stmtCount->fetch(PDO::FETCH_ASSOC);
+    // $total_registros = $resultadoCount['total_registros'];
 
     $stmt = $db->prepare("SELECT nome_barbeiro, nome_salao, id FROM barbeiro WHERE id = :user_id");
     $stmt->bindParam(':user_id', $user_id);
@@ -116,7 +116,6 @@ if (isset($_SESSION['user_id'])) {
 						<div class="card-content">
 							<p>Nome do Estabelecimento: <?php echo "<strong>$salao</strong>"; ?></p>
 							<p>ID do usuário: <?php echo "<strong>$id</strong>"; ?></p>
-							<p>Total de Agendamentos: <?php echo "<strong> $total_registros</strong>"; ?></p>
 						</div><!--CARD CONTENT-->
 					</div><!--CARD DESATIVADO-->
 						<div class="card-desativado card-dois">

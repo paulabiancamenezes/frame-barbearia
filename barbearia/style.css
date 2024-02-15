@@ -75,6 +75,18 @@ h1{
 		align-items: center;
 
 	}
+	section.hora p{
+            font-size: 15px;
+        }
+        section.hora .btn-confirma{
+            display: flex;
+            justify-content: space-between;
+            width: 23%;
+        }
+        section.hora i{
+            color: #fff;
+            font-size: 22px;
+        }
 	section.agenda .flex{
 		max-width: 1050px;
 		padding-left: 12%;
@@ -171,7 +183,7 @@ h1{
 		gap: 10px;
 		justify-content: space-between;
 		padding: 3%;
-		font-size: 20px;
+		font-size: 25;
 		margin-bottom: 5%;
 		width: 600px;
 		height: 150px;
@@ -186,7 +198,6 @@ h1{
 		gap: 10px;
 		justify-content: center;
 		flex-direction: column;
-		font-size: 20px;
 		text-align: center;
 		margin-bottom: 5%;
 		width: 180px;
@@ -205,7 +216,9 @@ h1{
 	.card-desativado h3{
 		font-weight: 500;
 	}
-
+    strong.status{
+            color: #0077b6;
+	}
 
 /*FIM DOS CARDS*/
 
@@ -332,7 +345,7 @@ h1{
 		display: none;
 	}
 }
-@media screen and (max-width:500px){
+@media screen and (max-width:690px){
 	nav.menu-lateral{
 		width: 70px;
 	}
@@ -340,26 +353,27 @@ h1{
 		display: none;
 	}
 	section{
-		padding: 20px 5%;
+		padding: 15px 5%;
 	}
 	section.hora .flex, section.agenda .flex{
 		justify-content: flex-end ;
 	}
 	section.agenda .card-desativado{
-		width: 60%;
+		width: 80%;
 	}
 	.hora-group{
-		max-width: 80%;
+		max-width: 75%;
 		margin: 0;
 		padding: 0px 0%;
 	}
 	.card-hora{
 		gap: 20px;
 		width: 100%;
+		height: 100%;
 		padding: 5%;
 	}
-	.card-hora p{
-		font-size: 15px;
+	.card-hora p, strong{
+		font-size: 12px;
 	}
 	.btn-confirma button{
 		width: 35px;
