@@ -1,7 +1,7 @@
 <?php
 	$servername = "localhost";
 	$username = "root";
-	$password = "";
+	$password = "Sprtuoe243";
 	$dbname = "banco";    
         try {
             $db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -133,9 +133,6 @@
 			                	echo '<div class="card-hora">';
                                     echo '<div class="card-info">';
                                     echo "<strong>Ainda não houve agendamentos</strong>";
-                                    echo'<div class="btn-tempo">';
-                                    echo'<button class="btn-tempo"><i class="bi bi-hourglass-split"></i></button>';
-                                    echo'</div>';
                                     echo '</div>';
                                     echo '</div>';
 			                }

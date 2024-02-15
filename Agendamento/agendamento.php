@@ -2,7 +2,7 @@
 $servername = "localhost";
 $dbname = "banco";
 $username = "root";
-$password = "";
+$password = "Sprtuoe243";
 
 try {
     $db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -112,8 +112,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         /*RODAPÉ*/
 
-        .page4{ 
-            padding: ;
+        .page4{
             background-color: #00061D ;
             height: 90vh;
             color: #fff;
@@ -137,7 +136,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
 
         .page4 p{
-            font-size: 25px: 
+            font-size: 25px;
             padding: 5%;
         }
 

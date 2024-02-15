@@ -5,7 +5,7 @@ if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "Sprtuoe243";
     $dbname = "banco";
 
     try {
@@ -68,7 +68,6 @@ if (isset($_SESSION['user_id'])) {
 		display: none;
 	}
 }
-	}
 </style>
 </head>
 <body>

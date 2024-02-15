@@ -20,7 +20,7 @@ nav.menu-lateral{
  	width: 260px;
  	height: 100%;
  	background-color: #202020;
- 	padding: 40px 0 40px 1%;
+ 	padding: 40px 0 40px 0%;
  	transition: .2s;
 }
 ul{
@@ -52,6 +52,7 @@ ul li.item-menu{
 .home-ativo{
 	background-color: #ff0f0f;
 	border-radius: 5px 0px 0px 5px;
+	width: 100%;
 
 }
 ul li.item-menu:hover{
@@ -342,21 +343,24 @@ h1{
 		width: 300px;
 	}
 	ul li.item-menu a .txt-link{
-		display: none;
+		display: block;
+	}
+	section.hora .flex, section.agenda .flex{
+		justify-content: flex-end ;
+	}
+	section{
+		padding: 15px 1%;
 	}
 }
 @media screen and (max-width:690px){
 	nav.menu-lateral{
 		width: 70px;
 	}
+	nav.menu-lateral:hover{
+		width: 210px;
+	}
 	ul li.item-menu a .txt-link{
-		display: none;
-	}
-	section{
-		padding: 15px 5%;
-	}
-	section.hora .flex, section.agenda .flex{
-		justify-content: flex-end ;
+		display: block;
 	}
 	section.agenda .card-desativado{
 		width: 80%;
