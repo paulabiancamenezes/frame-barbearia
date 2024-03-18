@@ -37,6 +37,32 @@ span{
 	list-style-type: none;
 }
 
+/*ALERT*/
+.alert {
+	position: absolute;
+	box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	left: 1%;
+	top: 1%;
+	width: 500px; /* Full width */
+	height: 80px; /* Full height */
+	overflow: hidden; /* Enable scroll if needed */
+	-webkit-animation-name: animatetop;
+	-webkit-animation-duration: 0.4s;
+	animation-name: animatetop;
+	animation-duration: 0.4s;
+	}
+	/* Add Animation */
+	@-webkit-keyframes animatetop {
+	  from {top:-300px; opacity:0} 
+	  to {top:0; opacity:1}
+	}
+
+	@keyframes animatetop {
+	  from {top:-300px; opacity:0}
+	  to {top:0; opacity:1}
+	}
+/*FIM DO ALERT*/
+
 /*CABEÇALHO*/
 
 header{
@@ -102,6 +128,18 @@ img.fototopo{
 	color: #000;
 	font-size: 30px;
 }
+.btn-enviar{
+	cursor: pointer;
+	width: 80px;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+	background: #FF0F0F;
+	color: #fff;
+	font-size: 17px;
+	font-weight: 300;
+	transition: 0.2s;
+}
 
 .btn-agendar{
 	cursor: pointer;
@@ -116,9 +154,8 @@ img.fototopo{
 	font-weight: 400;
 	transition: 0.2s;
 }
-
-button:hover{
-	transform: scale(1.02);
+.btn-agendar:hover, .btn-enviar:hover{
+	transform: scale(1.01);
 	background-color: #8d0801;
 }
 
@@ -253,7 +290,7 @@ section.page4 .flex{
 }
 
 .page4 p{
-	font-size: 25px;
+	font-size: 25px: 
 	padding: 5%;
 }
 

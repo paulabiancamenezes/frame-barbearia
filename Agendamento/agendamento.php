@@ -2,7 +2,7 @@
 $servername = "localhost";
 $dbname = "banco";
 $username = "root";
-$password = "Sprtuoe243";
+$password = "";
 
 try {
     $db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -22,10 +22,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $stmt = $db->prepare("INSERT INTO agendamentos
             (nome, numero, servico, data, hora, email)
              VALUES (:nome, :numero, :servico, :data, :hora, :email)");
+        try{
             $stmt->execute(['nome' => $nome, 'numero' => $numero,'servico' => $servico, 'data' => $data, 'hora' => $hora, 'email' => $email]); 
-        
-            echo '<script> alert("Agendamento enviado para o profissional, ele responderá no seu email!")</script>';
+            $success_message = '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                  <strong>Agendado com Sucesso!</strong> Seu agendamento foi enviado ao profissional, fique atento ao email e celular fornecido.
+                                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>';
+            echo "$success_message";
+  }catch(PDOException $e){
+    echo'<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                  <strong>Erro inesperado!</strong>'. $e->getMessage().'
+                                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>' ;
   }
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -33,10 +43,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <title>Agendamento</title>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="img/penteado.png" type="image/x-icon">
+    <link rel="icon" href="img/barbeiro.png" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
     <style type="text/css">
         *{
@@ -112,7 +122,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         /*RODAPÉ*/
 
-        .page4{
+        .page4{ 
+            padding: ;
             background-color: #00061D ;
             height: 90vh;
             color: #fff;
@@ -136,7 +147,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
 
         .page4 p{
-            font-size: 25px;
+            font-size: 25px: 
             padding: 5%;
         }
 
@@ -193,7 +204,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			</div><!--logo-->
 		</div><!--interface-->
 	</header>
-
 	<main>
 	   <section class="form">
           <div class="form-header">
@@ -213,7 +223,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 <label for="exampleInputEmail1">E-mail:</label>
                 <div class="input-group">
                   <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required placeholder="Digite seu e-mail" name="email">
+                  <input type="email" class="form-control" id="exampleInputEmail1" required aria-describedby="emailHelp"  placeholder="Digite seu e-mail" name="email">
                 </div>
                 <small id="emailHelp" class="form-text text-muted">Usaremos para enviar a confirmação do profissional.</small>
               </div>
@@ -244,13 +254,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
                <div class="form-group">
                 <label for="exampleInputText">Horário do agendamento:</label>
-                <div class="input-group">              <input type="time" class="form-control" id="exampleInputTime" name="hora" required>
+                <div class="input-group">              
+                <input type="time" class="form-control" id="exampleInputTime" required name="hora" >
                 </div>
               </div>
 
               <div class="form-group form-check">
               </div>
-              <button type="submit" class="btn">Agendar</button>
+              <button type="submit" class="btn-enviar">Agendar</button>
             </form>
       </div>
     </section>
@@ -297,4 +308,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     <p>Todos os direitos reservados por @Barbearia</p>
             </div>
         </section>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
