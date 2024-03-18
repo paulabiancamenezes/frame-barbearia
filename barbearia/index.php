@@ -5,7 +5,7 @@ if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $servername = "localhost";
     $username = "root";
-    $password = "Sprtuoe243";
+    $password = "";
     $dbname = "banco";
 
     try {
@@ -68,6 +68,7 @@ if (isset($_SESSION['user_id'])) {
 		display: none;
 	}
 }
+	}
 </style>
 </head>
 <body>
@@ -95,6 +96,12 @@ if (isset($_SESSION['user_id'])) {
 					<a href="historicoagendamento.php">
 						<span class="icon"><i class="bi bi-archive"></i></span>
 						<span class="txt-link">Histórico</span>
+					</a>
+				</li>
+				<li class="item-menu">
+					<a href="configuracao.php">
+						<span class="icon"><i class="bi bi-gear"></i></span>
+						<span class="txt-link">Configurações</span>
 					</a>
 				</li>
 				<li class="item-menu">

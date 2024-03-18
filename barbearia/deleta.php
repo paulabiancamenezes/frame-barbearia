@@ -15,16 +15,16 @@ try {
 $id = $_GET['id'];
 
 try {
-    // Atualiza o status para 'confirmado'
-    $stmt = $db->prepare("UPDATE agendamentos SET status_agendamento = 'Encerrado' WHERE id = :id");
+    // Exclui o agendamento recusado
+    $stmt = $db->prepare("DELETE FROM agendamentos WHERE id = :id");
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
 } catch (PDOException $e) {
-    echo "Erro ao aceitar o agendamento: " . $e->getMessage();
+    echo "Erro ao recusar o agendamento: " . $e->getMessage();
     exit();
 }
 
 // Redireciona de volta para a página de horários pendentes
-header("Location: horarioconfirmado.php");
+header("Location: historicoagendamento.php");
 exit();
 ?>

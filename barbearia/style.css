@@ -17,7 +17,7 @@ nav.menu-lateral{
  	top: 0;
  	left: 0;
  	box-shadow: 4px 0px 0px #ff0f0f; /*horizontal vertical espalhamento*/
- 	width: 260px;
+ 	width: 200px;
  	height: 100%;
  	background-color: #202020;
  	padding: 40px 0 40px 0%;
@@ -28,23 +28,23 @@ ul{
 	list-style-type: none;
 }
 ul{
-	margin-left: 13px;
+	margin-left: 18px;
 }
 ul li.item-menu a{
 	overflow: hidden;
 	color: #fff;
 	text-decoration: none;
-	font-size: 20px;
+	font-size: 16px;
 	padding: 20px 4%;
 	display :flex;
 	margin-bottom: 20px;
 	line-height: 30px;
 }
 ul li.item-menu a .txt-link{
-	margin-left: 35px;
+	margin-left: 15px;
 }
 ul li.item-menu a .icon > i{
-	font-size: 22px;
+	font-size: 20px;
 }
 ul li.item-menu{
 	transition: .4s;
@@ -78,16 +78,12 @@ h1{
 	}
 	section.hora p{
             font-size: 15px;
-        }
-        section.hora .btn-confirma{
-            display: flex;
-            justify-content: space-between;
-            width: 23%;
-        }
-        section.hora i{
-            color: #fff;
-            font-size: 22px;
-        }
+    }
+    section.hora .btn-confirma{
+        display: flex;
+        justify-content: space-between;
+        width: 23%;
+    }
 	section.agenda .flex{
 		max-width: 1050px;
 		padding-left: 12%;
@@ -105,23 +101,22 @@ h1{
 		color: #000;
 		cursor: pointer;
 	}
-	section.hora .btn-confirma button, .btn-tempo button{
+	section.hora .btn-confirma button{
 		border-radius: 5px;
-		width: 60px;
+		width: 55px;
 		height: 50px;
 		cursor: pointer;
 		border: none;
-		font-size: 22px;
+		font-size: 15px;
 		transition: .3s;
 		padding: 2%;
 	}
 	section.hora button.confirma{		
-		margin-bottom: 5%;
 		color: #fff;
-		background-color: #0077b6;
+		background-color: #319835;
 	}
 	section.hora button.confirma:hover{
-		background-color: #023e8a;
+		background-color: #005503;
 	}
 	section.hora button.rejeita:hover{
 		background-color: #810000;
@@ -130,16 +125,9 @@ h1{
 		color: #fff;
 		background-color: #d13535;
 	}
-	.btn-tempo button{
-		background-color: #fff;
-	}
-	.btn-tempo i{
-		color: #ffae00;
-		font-size: 36px;
-	}
-	.btn-tempo .urgente i{
-		font-size: 40px;
-		color: #ff0f0f;
+	section.hora button.anotacao{
+		background-color: #003566;
+		color: #fff;
 	}
 	.line{
 		border-bottom: 1px solid #00000050;
@@ -211,136 +199,22 @@ h1{
 		box-shadow: 2px 3px 10px 2px rgba(0, 0, 0, 0.3);
 	}
 	.card i{
-		font-size: 36px;
+		font-size: 32px;
 		color: #ff0f0f;
 	}
 	.card-desativado h3{
 		font-weight: 500;
 	}
-    strong.status{
-            color: #0077b6;
-	}
 
 /*FIM DOS CARDS*/
 
-/*MODAL*/
-
-		/* The Modal (background) */
-		.modal {
-		  display: none; /* Hidden by default */
-		  position: fixed; /* Stay in place */
-		  z-index: 1; /* Sit on top */
-		  padding-top: 100px; /* Location of the box */
-		  left: 0;
-		  top: 0;
-		  width: 100%; /* Full width */
-		  height: 100%; /* Full height */
-		  overflow: auto; /* Enable scroll if needed */
-		  background-color: rgb(0,0,0); /* Fallback color */
-		  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-		}
-
-		/* Modal Content */
-		.modal-content {
-		border-radius:10px;
-		position: relative;
-		background-color: #fefefe;
-		margin: auto;
-		padding: 0;
-		border: 0;
-		width: 35%;
-		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-		-webkit-animation-name: animatetop;
-		-webkit-animation-duration: 0.4s;
-		animation-name: animatetop;
-		animation-duration: 0.4s;
-		}
-
-		/* Add Animation */
-		@-webkit-keyframes animatetop {
-		  from {top:-300px; opacity:0} 
-		  to {top:0; opacity:1}
-		}
-
-		@keyframes animatetop {
-		  from {top:-300px; opacity:0}
-		  to {top:0; opacity:1}
-		}
-
-		/* The Close Button */
-		.close {
-		margin-top: -7px;
-		transition: .3s;
-		color: white;
-		float: right;
-		font-size: 35px;
-		font-weight: 400;
-		}
-
-		.close:hover,
-		.close:focus {
-		  text-decoration: none;
-		  cursor: pointer;
-		}
-
-		.modal-header {
-		border-radius:10px 10px 0px 0px;
-		  padding: 16px 16px;
-		  background-color: #023047;
-		  color: white;
-		}
-
-		.modal-body {
-			text-align:center;
-		    padding: 15px 16px;
-		    font-size: 18px;
-		}
-
-		.modal-footer {
-		  padding: 2px 16px;
-		  color: white;
-		}
-		.modal .btn-confirma{
-			gap:20px;
-			display: flex;
-			justify-content: center;
-			width: 100%;
-		}
-
-		.btn-confirma button{
-		  border-radius: 5px;
-		  width: 60px;
-		  height: 50px;
-		  cursor: pointer;
-		  border: none;
-		  font-size: 22px;
-		  transition: .3s;
-		  padding: 2%;
-		  }
-		.modal button.confirma{		
-		   margin-bottom: 5%;
-		   color: #fff;
-		   background-color: #0077b6;
-		}
-		.modal button.confirma:hover{
-		   background-color: #023e8a;
-		}
-		.modal button.rejeita:hover{
-		   background-color: #810000;
-		}
-		.modal button.rejeita {
-		color: #fff;
-		   background-color: #d13535;
-		}
-		/*FIM DO MODAL*/
-
 @media screen and (max-width: 1050px){
+	body{
+		transition: ;
+	}
 	nav.menu-lateral{
  	width: 70px;
  	height: 100%;
-}
-	nav.menu-lateral:hover{
-		width: 300px;
 	}
 	ul li.item-menu a .txt-link{
 		display: block;
@@ -354,10 +228,7 @@ h1{
 }
 @media screen and (max-width:690px){
 	nav.menu-lateral{
-		width: 70px;
-	}
-	nav.menu-lateral:hover{
-		width: 210px;
+		width: 55px;
 	}
 	ul li.item-menu a .txt-link{
 		display: block;
@@ -379,11 +250,14 @@ h1{
 	.card-hora p, strong{
 		font-size: 12px;
 	}
-	.btn-confirma button{
-		width: 35px;
-		height: 30px;
-	}
 	h1{
 		font-size: 15px;
+	}
+	.btn-confirma{
+		flex-direction: column;
+	}
+
+	.btn-confirma button{
+		margin-bottom: 10%;
 	}
 }

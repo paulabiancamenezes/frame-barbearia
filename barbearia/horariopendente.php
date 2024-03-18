@@ -1,7 +1,7 @@
 <?php
 	$servername = "localhost";
 	$username = "root";
-	$password = "Sprtuoe243";
+	$password = "";
 	$dbname = "banco";    
         try {
             $db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -33,32 +33,14 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	<link rel="icon" href="../img/penteado.png" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<title>Horários Pendentes</title>		
+	<title>Horários Pendentes</title>
+	<style type="text/css">	
+	    strong.status{
+	            color: #0077b6;
+		}
+	</style>		
 </head>
-<body>
-	<!-- Modal -->
-				<div id="myModal" class="modal">
-
-				  <!-- Modal content -->
-				  <div class="modal-content">
-				    <div class="modal-header">
-				      <span class="close">&times;</span>
-				      <h2>Você confirma o agendamento?</h2>
-				    </div>
-				    <div class="modal-body">
-				      <p>Caso confirme, essa opção <strong>não</strong> poderá ser revertida.</p>
-				    </div>
-				    <div class="modal-footer">
-				      <div class="btn-confirma">
-				      	<button class="confirma"><i class="bi bi-check2"></i></button>
-				        <button class="rejeita" id="fechar"><i class="bi bi-x-lg"></i></button>
-				      </div>
-				    </div>
-				  </div>
-
-				</div>
-			<!-- Fim do Modal -->
-			
+<body>			
 	<nav class="menu-lateral">
         <ul>
             <li class="item-menu">
@@ -85,6 +67,12 @@
                     <span class="txt-link">Histórico</span>
                 </a>
             </li>
+            <li class="item-menu">
+					 <a href="configuracao.php">
+						<span class="icon"><i class="bi bi-gear"></i></span>
+						<span class="txt-link">Configurações</span>
+					</a>
+				</li>
             <li class="item-menu">
                 <a href="..\logout.php">
                     <span class="icon"><i class="bi bi-box-arrow-in-right"></i></span>
@@ -123,18 +111,18 @@
 			                        echo '<p>Data: <strong>' . htmlspecialchars($agendamento["data"]) . '</strong></p>';
 			                        echo '<p>Status: <strong class="status">' . htmlspecialchars($agendamento["status_agendamento"]) . '</strong></p>';
 			                        echo '</div>';
-						            	echo '<div class="btn-confirma">';
-											echo '<a href="aceitar.php?id=' . $agendamento["id"] . '"><button class="confirma"><i class="bi bi-check2"></i></button></a>';
+					            	echo '<div class="btn-confirma">';
+									echo '<a href="aceitar.php?id=' . $agendamento["id"] . '"><button class="confirma"><i class="bi bi-check2"></i></button></a>';
                             		echo '<a href="recusar.php?id=' . $agendamento["id"] . '"><button class="rejeita"><i class="bi bi-x-lg"></i></button></a>';
-											echo '</div>';
+									echo '</div>';
 			                        echo '</div>';
 			                    }
 		                	}else{
-			                	echo '<div class="card-hora">';
-                                    echo '<div class="card-info">';
-                                    echo "<strong>Ainda não houve agendamentos</strong>";
-                                    echo '</div>';
-                                    echo '</div>';
+			                	echo '<div class="card-hora pendente">';
+                                echo '<div class="card-info">';
+                                echo "<strong>Ainda não houve agendamentos</strong>";
+                                echo '</div>';
+                                echo '</div>';
 			                }
 						?>
 					</div>

@@ -1,7 +1,7 @@
 <?php
     $servername = "localhost";
     $username = "root";
-    $password = "Sprtuoe243";
+    $password = "";
     $dbname = "banco";    
         try {
             $db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -35,8 +35,9 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Horarios Confirmados</title>
     <style type="text/css">
-        
-        
+        strong.status {
+            color: #319835;
+        }
     </style>
 </head>
 <body>
@@ -66,6 +67,12 @@
                     <span class="txt-link">Histórico</span>
                 </a>
             </li>
+            <li class="item-menu">
+                    <a href="configuracao.php">
+                        <span class="icon"><i class="bi bi-gear"></i></span>
+                        <span class="txt-link">Configurações</span>
+                    </a>
+                </li>
             <li class="item-menu">
                 <a href="..\logout.php">
                     <span class="icon"><i class="bi bi-box-arrow-in-right"></i></span>
@@ -104,15 +111,16 @@
                                     echo '<p>Data: <strong>' . htmlspecialchars($agendamento["data"]) . '</strong></p>';
                                     echo '<p>Status: <strong class="status">' . htmlspecialchars($agendamento["status_agendamento"]) . '</strong></p>';
                                     echo '</div>';
-                                    echo'<div class="btn-tempo">';
-                                    echo'<a href="encerrado.php?id=' . $agendamento["id"] . '"><button class="confirma"><i class="bi bi-check2"></i></button></a>';
+                                    echo'<div class="btn-confirma">';
+                                    echo'<a href="encerrado.php?id=' . $agendamento["id"] . '"><button class="confirma"><i class="bi bi-check2-square"></i></button></a>';
+                                    echo'<a href="anota.php"><button class="anotacao"><i class="bi bi-pencil-square"></i></button></a>';
                                     echo'</div>';
                                     echo'</div>';
                                     }
                                 }else{
                                     echo '<div class="card-hora">';
                                     echo '<div class="card-info">';
-                                    echo "<strong>Ainda não houve agendamentos</strong>";
+                                    echo "<strong>Você ainda não confirmou nenhum agendamento.</strong>";
                                     echo '</div>';
                                     echo '</div>';
                                 }
