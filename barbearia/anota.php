@@ -5,7 +5,7 @@ if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "Sprtuoe243";
     $dbname = "banco";
 
     try {
@@ -27,7 +27,7 @@ if (isset($_SESSION['user_id'])) {
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link rel="icon" href="../img/penteado.png" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="style.css">
-	<title>Inicio</title>
+	<title>Anotações do Atendimento</title>
 <style type="text/css">
 	h3.title{
 		font-weight: 400;
@@ -35,23 +35,51 @@ if (isset($_SESSION['user_id'])) {
 	}
 	form{
 		border-radius: 5px;
-		width: 300px;
-		height: 250px;
+		width: 35%;
+		height: 100%;
 		box-shadow: 0px 2px 4px 1px #0005;
 	}
+	input , textarea{
+		border-radius: 8px;
+		border: 0.5px solid #adb5bd;
+		outline: none;
+		width: 100%;
+		height: 45px;
+		margin-top: 8%;
+	}
+	input::placeholder, textarea::placeholder{
+		padding: 2% 4%;
+		font-size: 14px;
+	}
 	.flex-form{
-		margin-top: 5%;
+		padding: 8% 10%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
 	}
-}	@media screen and (max-width:500px){
+	button{
+	cursor: pointer;
+	margin-top: 10%;
+	width: 150px;
+	height: 50px;
+	border: none;
+	border-radius: 5px;
+	background: #FF0F0F;
+	color: #fff;
+	font-size: 17px;
+	font-weight: 400;
+	transition: 0.2s;
+	}
+	button:hover{
+		background-color: #8d0801;
+	}
+		@media screen and (max-width:500px){
 	section{
 		padding: 30px 0px 0px 20%;
 	}
 }
-	}
+	
 </style>
 </head>
 <body>
@@ -101,7 +129,7 @@ if (isset($_SESSION['user_id'])) {
 	                <div class="card-desativado">
 	                    <h1>Anotações do Atendimento.</h1><br>
 	                    	<div class="card-content">
-	                        	<p>Aqui você pode realizar anotações sobre o atendimento e todos os pontos que deseja ressaltar, essa sessão é totalmente opicional, caso deseje registrar algum acontecimento.</p>
+	                        	<p>Aqui você pode realizar anotações sobre o atendimento e todos os pontos que deseja ressaltar, essa sessão é totalmente opicional caso deseje registrar algum acontecimento.</p>
                     		</div><!--CARD CONTENT-->
                 	</div><!--CARD DESATIVADO-->
             	</div><!--Flex-->
@@ -112,8 +140,10 @@ if (isset($_SESSION['user_id'])) {
     			<div class="flex">.
 			    	<form method="post">
 			    		<div class="flex-form">
-				    		<label>Como foi o atendimento?</label>
-				    		<textarea placeholder="Descreva aqui..."></textarea>
+							<h3>Formulário do Atendimento.</h3>
+							<input type="text" placeholder="Quem conduziu o atendimento?">
+				    		<textarea placeholder="Como foi o atendimento?"></textarea>
+							<button class="btn-anota">Salvar</button>
 			    		</div>
 			    	</form>
 			    </div>
